@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum- scale=1, user-scalable=no">
+<title>Location App</title>
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/location.css" />
+<style> body {
+padding-top: 20px;
+}
+.header {
+text-align: center;
+}
+.location-info {
+text-align: center; margin-top: 20px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h2>Current Location</h2>
+</div>
+<div class="location-info">
+<p id="latitude">Latitude: </p>
+<p id="longitude">Longitude: </p>
+<button class="btn btn-primary" id="getLocationButton">Get Location</button>
+</div>
+</div>
+<script>
+document.addEventListener('deviceready', onDeviceReady, false); document.getElementById('getLocationButton').addEventListener('click', function () {
+navigator.geolocation.getCurrentPosition(onSuccess, onError);
+});
+function onSuccess(position) {
+var latitude = position.coords.latitude;
+var longitude = position.coords.longitude; document.getElementById('latitude').textContent = 'Latitude: ' + latitude; document.getElementById('longitude').textContent = 'Longitude: ' + longitude;
+}
+function onError(error) {
+alert('Error getting location: ' + error.message);
+}
+</script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/location.js"></script>
+</body>
+</html>
